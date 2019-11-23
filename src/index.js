@@ -4,6 +4,10 @@ const nodeConfig = require('./config/tsconfig.node.json');
 const reactNativeConfig = require('./config/tsconfig.react-native.json');
 const reactConfig = require('./config/tsconfig.react.json');
 
+const NODE = 'node';
+const REACT_NATIVE = 'react-native';
+const REACT = 'react';
+
 inquirer
   .prompt([
     {
@@ -12,6 +16,21 @@ inquirer
       name: 'selectedFramework', choices: ['react', 'react-native', 'node']
     }
   ])
-  .then(answers => {
-    console.log(answers.selectedFramework);
+  .then(({ selectedFramework }) => {
+    let tsconfigFile = '';
+
+    switch(selectedFramework) {
+      case NODE:
+        tsconfigFile = nodeConfig;
+        break;
+      case REACT_NATIVE:
+        tsconfigFile = reactNativeConfig;
+        break;
+      case REACT:
+        tsconfigFile = reactConfig;
+        break;
+    }
+
+    const cwd = process.cwd();
+    writeFileSync(cwd + '/tsconfig.json', JSON.stringify(tsconfigFile, null, 2));
   });
