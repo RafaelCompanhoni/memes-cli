@@ -43,15 +43,9 @@ inquirer
       message: 'Será utilizado para migrar um projeto JavaScript pré-existente?',
       name: 'migration',
       choices: [YES, NO]
-    },
-    {
-      type: 'list',
-      message: 'Será exportado como módulo NPM?',
-      name: 'isNpm',
-      choices: [YES, NO]
-    },
+    }
   ])
-  .then(({ selectedFramework, mode, migration, isNpm }) => {
+  .then(({ selectedFramework, mode, migration }) => {
     let tsconfigFile = '';
     let modeFile = ''
     let purposeFile = '';
@@ -70,10 +64,6 @@ inquirer
 
     modeFile = mode === DEV ? devConfig : prodConfig;
     purposeFile = migration === YES ? forMigrationsConfig : forNewProjectsConfig;
-    console.log(`Para migração: ${migration}`);
-    console.log(JSON.stringify(purposeFile, null, 2));
-
-    console.log(`Exportar como módulo NPM: ${isNpm}`);
 
     const cwd = process.cwd();
     writeFileSync(cwd + '/tsconfig.json', JSON.stringify(tsconfigFile, null, 2));
