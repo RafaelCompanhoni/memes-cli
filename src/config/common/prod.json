@@ -1,0 +1,3 @@
+{
+    "exclude": ["webpack", "jest"]
+}
