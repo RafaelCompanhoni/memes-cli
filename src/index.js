@@ -8,6 +8,9 @@ const reactConfig = require('./config/react/tsconfig.react.json');
 const devConfig = require('./config/common/dev.json');
 const prodConfig = require('./config/common/prod.json');
 
+const forMigrationsConfig = require('./config/common/forMigrations.json');
+const forNewProjectsConfig = require('./config/common/forNewProjects.json');
+
 // frameworks
 const NODE = 'node';
 const REACT_NATIVE = 'react-native';
@@ -51,6 +54,7 @@ inquirer
   .then(({ selectedFramework, mode, migration, isNpm }) => {
     let tsconfigFile = '';
     let modeFile = ''
+    let purposeFile = '';
 
     switch(selectedFramework) {
       case NODE:
@@ -65,11 +69,10 @@ inquirer
     }
 
     modeFile = mode === DEV ? devConfig : prodConfig;
-
-    console.log(`Modo:`);
-    console.log(JSON.stringify(modeFile, null, 2));
-
+    purposeFile = migration === YES ? forMigrationsConfig : forNewProjectsConfig;
     console.log(`Para migração: ${migration}`);
+    console.log(JSON.stringify(purposeFile, null, 2));
+
     console.log(`Exportar como módulo NPM: ${isNpm}`);
 
     const cwd = process.cwd();
