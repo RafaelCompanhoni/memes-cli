@@ -65,6 +65,11 @@ inquirer
     modeFile = mode === DEV ? devConfig : prodConfig;
     purposeFile = migration === YES ? forMigrationsConfig : forNewProjectsConfig;
 
+    const result = [...tsconfigFile, ...modeFile, ...purposeFile];
+
+    console.log('RESULTADO');
+    console.log(JSON.stringify(result, null, 2));
+
     const cwd = process.cwd();
-    writeFileSync(cwd + '/tsconfig.json', JSON.stringify(tsconfigFile, null, 2));
+    writeFileSync(cwd + '/tsconfig.json', JSON.stringify(result, null, 2));
   });

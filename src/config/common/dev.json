@@ -1,4 +1,5 @@
 {
-    "sourceMap": true,
-    "removeComments": true
+    "compilerOptions": {
+        "sourceMap": true
+    }
 }

@@ -1,15 +1,19 @@
 {
-    "allowJS": true,
-    "checkJS": false,
-    "strict": false,                           
-    "noImplicitAny": false,                 
-    "strictNullChecks": false,              
-    "strictFunctionTypes": false,           
-    "strictPropertyInitialization": false,  
-    "noImplicitThis": false,                
-    "alwaysStrict": false,                  
-    "noUnusedLocals": false,                
-    "noUnusedParameters": false,            
-    "noImplicitReturns": false,             
-    "noFallthroughCasesInSwitch": false
+    "compilerOptions": {
+        "allowJS": true,
+        "checkJS": false,
+        "strict": false,                           
+        "noImplicitAny": false,                 
+        "strictNullChecks": false,              
+        "strictFunctionTypes": false,           
+        "strictPropertyInitialization": false,  
+        "noImplicitThis": false,                
+        "alwaysStrict": false,                  
+        "noUnusedLocals": false,                
+        "noUnusedParameters": false,            
+        "noImplicitReturns": false,             
+        "noFallthroughCasesInSwitch": false,
+        "forceConsistentCasingInFileNames": false,
+        "suppressImplicitAnyIndexErrors": false
+    }
 }

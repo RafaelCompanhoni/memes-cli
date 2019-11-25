@@ -1,3 +1,5 @@
 {
-    "exclude": ["webpack", "jest"]
+    "compilerOptions": {
+        "removeComments": true
+    }
 }
