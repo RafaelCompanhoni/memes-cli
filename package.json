@@ -1,5 +1,5 @@
 {
-  "name": "memes-cli",
+  "name": "metodos-modelos-cli",
   "version": "1.0.0",
   "description": "Exemplo de uma aplicação CLI para geração automática de arquivos tsconfig",
   "main": "src/index.js",
