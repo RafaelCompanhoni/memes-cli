@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const mergeJSON = require("merge-json") ;
 const { writeFileSync } = require('fs');
 
 const nodeConfig = require('./config/node/tsconfig.node.json');
@@ -61,14 +62,9 @@ inquirer
         tsconfigFile = reactConfig;
         break;
     }
-
     modeFile = mode === DEV ? devConfig : prodConfig;
     purposeFile = migration === YES ? forMigrationsConfig : forNewProjectsConfig;
-
-    const result = [...tsconfigFile, ...modeFile, ...purposeFile];
-
-    console.log('RESULTADO');
-    console.log(JSON.stringify(result, null, 2));
+    const result = mergeJSON.merge(mergeJSON.merge(tsconfigFile, modeFile), purposeFile); 
 
     const cwd = process.cwd();
     writeFileSync(cwd + '/tsconfig.json', JSON.stringify(result, null, 2));
